@@ -40,6 +40,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'rspec-rails', '~> 6.1.0'
   gem "factory_bot_rails"
+  gem 'rswag-specs'
 end
 
 group :development do
@@ -52,3 +53,11 @@ gem 'devise', '~> 4.9.3'
 gem 'devise-jwt'
 
 gem 'faker'
+
+gem 'pry', '~> 0.14.2'
+
+gem 'rswag-api'
+
+gem 'rswag-ui'
+
+gem 'cancancan'

@@ -1,0 +1,89 @@
+---
+openapi: 3.0.1
+info:
+  title: RAILS API
+  version: v1
+paths:
+  "/users/sign_in":
+    post:
+      summary: User Sign In
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: user signed in successfully
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
+              required:
+              - user
+  "/users/sign_out":
+    delete:
+      summary: User Logout
+      tags:
+      - Users
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: User signed out successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                  data:
+                    type: object
+                    properties: {}
+                required:
+                - status
+        '401':
+          description: User has no active session
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                required:
+                - status
+servers:
+- url: http://127.0.0.1:3000/
+  variables:
+    defaultHost:
+      default: www.example.com

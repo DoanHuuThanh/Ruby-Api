@@ -6,9 +6,11 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, options = {})
+  binding.pry
     render json: {
       status: {code: 200, message: "user signed in succesfully",
-               data: current_user}
+               data: current_user,
+              }
     }, status: :ok
   end
 
